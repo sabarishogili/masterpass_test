@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Network {
+public class NetworkController {
 
-    private static final Logger logger = LoggerFactory.getLogger(Network.class);
+    private static final Logger logger = LoggerFactory.getLogger(NetworkController.class);
 
     @Autowired
     CityPairsLocator cityPairsLocator;
@@ -20,7 +20,7 @@ public class Network {
     private final String MATCH = "yes";
 
     @GetMapping("/connected")
-    public String connected(@RequestParam(value = "origin") String origin,@RequestParam(value = "destination") String destination) {
+    public String connected(@RequestParam(value = "origin", defaultValue = "") String origin, @RequestParam(value = "destination", defaultValue = "") String destination) {
         try {
             if (cityPairsLocator.isConnected(origin, destination)) {
                 return MATCH;

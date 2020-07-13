@@ -25,7 +25,7 @@ public class NetworkController {
             if (cityPairsLocator.isConnected(origin, destination)) {
                 return MATCH;
             }
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             logger.error("Error while computing connection between cities {}, {}", origin, destination, e);
         }
         return NOT_MATCH;
